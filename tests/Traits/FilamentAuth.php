@@ -8,10 +8,15 @@ trait FilamentAuth
 {
     public function loginAsAdmin(Browser $browser): Browser
     {
-        $browser->driver->manage()->deleteAllCookies();
+        $browser->visit('/admin/login');
+
+        $path = rtrim(parse_url($browser->driver->getCurrentURL(), PHP_URL_PATH), '/');
+        if ($path === '/admin') {
+            $browser->driver->manage()->deleteAllCookies();
+            $browser->visit('/admin/login');
+        }
 
         return $browser
-            ->visit('/admin/login')
             ->type('[id="form.email"]', 'admin@gmail.com')
             ->type('[id="form.password"]', 'password')
             ->press('Sign in')

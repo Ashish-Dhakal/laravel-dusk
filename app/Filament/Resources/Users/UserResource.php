@@ -29,11 +29,11 @@ class UserResource extends Resource
     {
         return [
             NavigationItem::make('Users')
-            ->url(static::getUrl())
-            ->icon('heroicon-o-rectangle-stack')
-            ->extraAttributes([
-                'id' => 'dusk-user-resource-nav'
-            ])
+                ->url(static::getUrl())
+                ->icon('heroicon-o-rectangle-stack')
+                ->extraAttributes([
+                    'id' => 'dusk-user-resource-nav',
+                ]),
         ];
     }
 
